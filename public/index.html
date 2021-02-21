@@ -1,0 +1,42 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://unpkg.com/vue@2.6.12/dist/vue.js"></script>
+  <title>Get hash</title>
+</head>
+
+<body>
+  <h1>Short urls</h1>
+  <main id="app">
+    <section>
+      <form @submit.prevent="createHash()">
+        <label for="url">Create hash</label>
+        <input type="text" name="url" id="url" v-model="url">
+        <button type="submit">Submit</button>
+      </form>
+      <ul>
+        <li v-for="({ hash, url },i) in urlData" :key="i">{{ hash }} : {{ url }}</li>
+      </ul>
+    </section>
+    <p v-if="error">{{ error }}</p>
+    <section>
+      <form @submit.prevent="getHashInfo()">
+        <label for="hash">Get hash Info</label>
+        <input type="text" name="hash" id="hash" v-model="hash">
+        <button type="submit">Submit</button>
+      </form>
+      <ul v-if="hashInfo">
+        <li>{{ hashInfo.hash }} : {{ hashInfo.url }}</li>
+      </ul>
+    </section>
+  </main>
+  <script src="app.js">
+
+  </script>
+</body>
+
+</html>
